@@ -12,7 +12,8 @@ from torch.utils.data import DataLoader, random_split
 def get_dataloaders(batch_size=32):
     # Use transforms.compose method to reformat images for modeling,
     # and save to variable all_transforms for later use
-    all_transforms = transforms.Compose([transforms.Resize((32,32)),
+    all_transforms = transforms.Compose([
+                                        # transforms.Resize((32,32)),
                                         transforms.ToTensor(),
                                         transforms.Normalize(mean=[0.4914, 0.4822, 0.4465],
                                                             std=[0.2023, 0.1994, 0.2010])
@@ -45,4 +46,4 @@ def get_dataloaders(batch_size=32):
                                 batch_size = batch_size,
                                 shuffle = False)
     
-    return train_loader, val_loader, test_loader
+    return train_loader, val_loader, test_loader, (len(train_dataset), len(val_dataset), len(test_dataset))

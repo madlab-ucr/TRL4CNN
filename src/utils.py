@@ -6,6 +6,7 @@ Copyright (c) 2022 M.A.D. Lab @ UCR (https://madlab.cs.ucr.edu)
 '''
 
 import matplotlib.pyplot as plt
+plt.set_loglevel('error')
 def plot_training_metrics(history=None, title=None, SAVE_PATH=None):
     
     metrics = [metric for metric in history.keys() if 'val' not in metric]

@@ -8,9 +8,9 @@ Copyright (c) 2022 M.A.D. Lab @ UCR (https://madlab.cs.ucr.edu)
 import torch.nn as nn
 import torch.nn.functional as F
 
-class BaselineCNN(nn.Module):
+class SimpleCNN(nn.Module):
     def __init__(self, num_classes):
-        super(BaselineCNN, self).__init__()
+        super(SimpleCNN, self).__init__()
         # self.conv1 = nn.Conv2d(in_channels=3, out_channels=8, kernel_size=3)
         # self.conv2 = nn.Conv2d(in_channels=8, out_channels=16, kernel_size=3)
         # self.conv3 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3)
@@ -45,7 +45,7 @@ class BaselineCNN(nn.Module):
         return out
 
 class VGG16(nn.Module):
-    def __init__(self, num_classes=10):
+    def __init__(self, num_classes):
         super(VGG16, self).__init__()
         self.layer1 = nn.Sequential(
             nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1),
@@ -106,14 +106,15 @@ class VGG16(nn.Module):
             nn.MaxPool2d(kernel_size = 2, stride = 2))
         self.fc = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(7*7*512, 4096),
+            # nn.Linear(7*7*512, 4096),
+            nn.LazyLinear(256),
             nn.ReLU())
         self.fc1 = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(4096, 4096),
+            nn.Linear(256, 128),
             nn.ReLU())
         self.fc2= nn.Sequential(
-            nn.Linear(4096, num_classes))
+            nn.Linear(128, num_classes))
         
     def forward(self, x):
         out = self.layer1(x)

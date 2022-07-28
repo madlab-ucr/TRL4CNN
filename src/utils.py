@@ -1,3 +1,10 @@
+'''
+Created Date: Wednesday, July 27th 2022, 5:15:31 pm
+Author: Rutuja Gurav (rutuja.gurav@email.ucr.edu)
+Copyright (c) 2022 M.A.D. Lab @ UCR (https://madlab.cs.ucr.edu)
+
+'''
+
 import matplotlib.pyplot as plt
 def plot_training_metrics(history=None, title=None, SAVE_PATH=None):
     

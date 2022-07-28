@@ -1,3 +1,10 @@
+'''
+Created Date: Wednesday, July 27th 2022, 1:06:27 pm
+Author: Rutuja Gurav (rutuja.gurav@email.ucr.edu)
+Copyright (c) 2022 M.A.D. Lab @ UCR (https://madlab.cs.ucr.edu)
+
+'''
+
 import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, random_split
